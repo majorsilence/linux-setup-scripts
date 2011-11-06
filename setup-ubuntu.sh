@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # install new applications
-sudo apt-get install monodevelop monodevelop-nunit mono-vbnc monodevelop-vala monodevelop-database mono-xsp monodevelop-versioncontrol dconf-tools lastfm git git-cola frozen-bubble filezilla pinta audacity pitivi mplayer cryptkeeper
+sudo apt-get install monodevelop monodevelop-nunit mono-vbnc monodevelop-vala monodevelop-database mono-xsp monodevelop-versioncontrol dconf-tools lastfm git git-cola frozen-bubble filezilla pinta audacity pitivi mplayer cryptkeeper compizconfig-settings-manager
 
 # gstreamer
 sudo apt-get install gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad
@@ -24,5 +24,10 @@ dconf write /com/canonical/unity-2d/launcher/use-strut true
 # dconf write /com/canonical/unity-2d/launcher/use-strut 0
 
 # white list application panel
-gsettings set com.canonical.Unity.Panel systray-whitelist "['cryptkeeper']"
+# Only works with unity 3d
+gsettings set com.canonical.Unity.Panel systray-whitelist "['JavaEmbeddedFrame', 'Wine', 'scp-dbus-service', 'Update-notifier', 'cryptkeeper']"
+setsid unity
+
+
+
 
