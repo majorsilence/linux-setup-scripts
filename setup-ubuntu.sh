@@ -4,29 +4,54 @@
 sudo apt-get update
 
 # upgrade all packages
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
-# install new applications
-sudo apt-get install monodevelop monodevelop-nunit mono-vbnc monodevelop-vala monodevelop-database mono-xsp monodevelop-versioncontrol dconf-tools lastfm git git-cola frozen-bubble filezilla pinta audacity pitivi mplayer cryptkeeper compizconfig-settings-manager
+configuremono()
+{
+	wget -O xamarin.gpg http://download.mono-project.com/repo/xamarin.gpg
+	apt-key add xamarin.gpg
+	rm -f xamarin.gpg
+	
+	rm -rf /etc/apt/sources.list.d/mono-xamarin.list
+	echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list
 
-# gstreamer
-sudo apt-get install gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad
+	apt-get update
+	apt-get install -y mono-complete sqlite3 unzip
+
+	echo "configure /etc/mono/registry for use with MVC5"
+	rm -rf /etc/mono/registry
+	mkdir /etc/mono/registry
+	mkdir /etc/mono/registry/LocalMachine
+	chmod g+rwx /etc/mono/registry/
+	chmod g+rwx /etc/mono/registry/LocalMachine
+
+	mozroots --sync --machine
+	# mozroots --import --sync
+}
+
+googledrive()
+{
+  add-apt-repository ppa:alessandro-strada/ppa -y
+  apt-get update
+  apt-get install google-drive-ocamlfuse -y
+}
+
+clem()
+{
+  add-apt-repository ppa:me-davidsansome/clementine
+  apt-get update 
+  apt-get install clementine -y
+}
+
+configuremono
+googledrive
+clem
+
+sudo apt-get install -y git fluxbox p7zip-full gstreamer1.0-plugins-ugly gstreamer1.0-ffmpeg gstreamer1.0-plugins-bad wine
 
 # clean up unused packages
-sudo apt-get autoclean
+sudo apt-get autoclean -y
 
-
-# Stop auto hiding unity 2d launcher
-# You will need to restart the system after doing this.
-dconf write /com/canonical/unity-2d/launcher/use-strut true
-
-# To re-enable auto hide run
-# dconf write /com/canonical/unity-2d/launcher/use-strut 0
-
-# white list application panel
-# Only works with unity 3d
-gsettings set com.canonical.Unity.Panel systray-whitelist "['JavaEmbeddedFrame', 'Wine', 'scp-dbus-service', 'Update-notifier', 'cryptkeeper']"
-setsid unity
 
 
 
