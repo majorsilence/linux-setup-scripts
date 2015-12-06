@@ -43,11 +43,20 @@ clem()
   apt-get install clementine -y
 }
 
+gitsetup()
+{
+  apt-get install -y git git-gui 
+  wget https://gist.githubusercontent.com/majorsilence/69e3fd56b07657b2e951/raw/f8fe9185849f85094c3278b8d1c89fa5c4467c28/Git%2520Config -O ~/.gitconfig
+}
+
 configuremono
 googledrive
 clem
+gitsetup
 
-sudo apt-get install -y git fluxbox p7zip-full gstreamer1.0-plugins-ugly gstreamer1.0-ffmpeg gstreamer1.0-plugins-bad wine
+apt-get install -y git git-gui fluxbox p7zip-full gstreamer1.0-plugins-ugly gstreamer1.0-ffmpeg gstreamer1.0-plugins-bad wine
+
+
 
 # clean up unused packages
 sudo apt-get autoclean -y
