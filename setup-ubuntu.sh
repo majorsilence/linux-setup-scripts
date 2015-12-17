@@ -16,7 +16,7 @@ configuremono()
 	echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list
 
 	apt-get update
-	apt-get install -y mono-complete sqlite3 unzip
+	apt-get install -y mono-complete sqlite3 unzip monodevelop mono-xsp4 mono-vbnc
 
 	echo "configure /etc/mono/registry for use with MVC5"
 	rm -rf /etc/mono/registry
@@ -61,7 +61,7 @@ clem
 gitsetup
 fluxbox
 
-apt-get install -y p7zip-full gstreamer1.0-plugins-ugly gstreamer1.0-ffmpeg gstreamer1.0-plugins-bad wine
+apt-get install -y p7zip-full gstreamer1.0-plugins-ugly  gstreamer1.0-plugins-bad wine
 
 # clean up unused packages
 sudo apt-get autoclean -y
