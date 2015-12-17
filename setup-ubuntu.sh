@@ -66,7 +66,7 @@ apt-get install -y p7zip-full gstreamer1.0-plugins-ugly  gstreamer1.0-plugins-ba
 # clean up unused packages
 sudo apt-get autoclean -y
 
-
+ ecryptfs-setup-private
 
 
 
