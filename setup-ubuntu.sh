@@ -61,7 +61,7 @@ dockerinstall()
   touch /etc/apt/sources.list.d/docker.list
   echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" >> /etc/apt/sources.list.d/docker.list
   apt-get update
-  apt-get install docker-engine
+  apt-get install docker-engine -y
 }
 
 configuremono
