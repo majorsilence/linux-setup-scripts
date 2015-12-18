@@ -49,17 +49,27 @@ gitsetup()
   wget https://gist.githubusercontent.com/majorsilence/69e3fd56b07657b2e951/raw/f8fe9185849f85094c3278b8d1c89fa5c4467c28/Git%2520Config -O ~/.gitconfig
 }
 
-fluxbox()
+fluxboxinstall()
 {
   apt-get install -y fluxbox 
   git clone https://github.com/majorsilence/FluxBoxConfig.git ~/.fluxbox
+}
+
+dockerinstall()
+{
+  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D	
+  touch /etc/apt/sources.list.d/docker.list
+  echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" >> /etc/apt/sources.list.d/docker.list
+  apt-get update
+  apt-get install docker-engine
 }
 
 configuremono
 googledrive
 clem
 gitsetup
-fluxbox
+fluxboxinstall
+dockerinstall
 
 apt-get install -y p7zip-full gstreamer1.0-plugins-ugly  gstreamer1.0-plugins-bad wine
 
