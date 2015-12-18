@@ -95,12 +95,31 @@ dockerinstall()
   apt-get install docker-engine -y
 }
 
+virtualboxinstall()
+{
+  	
+  touch /etc/apt/sources.list.d/virtualbox.list
+  if [ "$ubuntuversion" == '14.04' ];
+  then
+    echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list
+  fi
+  if [ "$ubuntuversion" == '15.10' ];
+  then
+    echo "deb http://download.virtualbox.org/virtualbox/debian wily contrib" >> /etc/apt/sources.list.d/virtualbox.list
+  fi
+  wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
+  
+  apt-get update
+  apt-get install virtualbox-5.0 -y
+}
+
 configuremono
 googledrive
 clem
 gitsetup
 fluxboxinstall
 dockerinstall
+virtualboxinstall
 
 apt-get install -y p7zip-full gstreamer1.0-fluendo-mp3 gstreamer1.0-plugins-bad wine network-manager-vpnc-gnome network-manager-openvpn-gnome
 
