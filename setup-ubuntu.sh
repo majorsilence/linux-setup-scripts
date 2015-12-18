@@ -113,6 +113,13 @@ virtualboxinstall()
   apt-get install virtualbox-5.0 -y
 }
 
+vagrantinstall()
+{
+	wget https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.deb
+	dpkg -i vagrant_1.7.4_x86_64.deb
+	rm -rf vagrant_1.7.4_x86_64.deb
+}
+
 configuremono
 googledrive
 clem
@@ -120,6 +127,7 @@ gitsetup
 fluxboxinstall
 dockerinstall
 virtualboxinstall
+vagrantinstall
 
 apt-get install -y p7zip-full gstreamer1.0-fluendo-mp3 gstreamer1.0-plugins-bad wine network-manager-vpnc-gnome network-manager-openvpn-gnome
 
