@@ -73,7 +73,7 @@ gitsetup
 fluxboxinstall
 dockerinstall
 
-apt-get install -y p7zip-full gstreamer1.0-plugins-ugly  gstreamer1.0-plugins-bad wine network-manager-vpnc-gnome
+apt-get install -y p7zip-full gstreamer1.0-plugins-ugly  gstreamer1.0-plugins-bad wine network-manager-vpnc-gnome network-manager-openvpn-gnome
 
 # clean up unused packages
 sudo apt-get autoclean -y
