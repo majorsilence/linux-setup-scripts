@@ -61,6 +61,8 @@ clem()
     add-apt-repository ppa:me-davidsansome/clementine
     apt-get update 
     apt-get install clementine -y
+  else
+    apt-get install clementine -y
   fi
 }
 
