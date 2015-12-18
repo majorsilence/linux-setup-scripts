@@ -6,6 +6,24 @@ sudo apt-get update
 # upgrade all packages
 sudo apt-get upgrade -y
 
+getubuntuversion()
+{
+	b=$(cat /etc/issue)
+
+	if [[ $b == *14.04* ]]; 
+		then 
+		echo '14.04'
+	fi
+
+	if [[ $b == *15.10* ]]; 
+		then 
+		echo '15.10'
+	fi
+}
+
+read ubuntuversion junk <<< $(getubuntuversion; echo $?)
+echo "ubuntu version is: $ubuntuversion"
+
 configuremono()
 {
 	wget -O xamarin.gpg http://download.mono-project.com/repo/xamarin.gpg
@@ -38,9 +56,12 @@ googledrive()
 
 clem()
 {
-  add-apt-repository ppa:me-davidsansome/clementine
-  apt-get update 
-  apt-get install clementine -y
+  if [ "$ubuntuversion" == '14.04' ];
+  then
+    add-apt-repository ppa:me-davidsansome/clementine
+    apt-get update 
+    apt-get install clementine -y
+  fi
 }
 
 gitsetup()
@@ -61,7 +82,15 @@ dockerinstall()
 {
   apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D	
   touch /etc/apt/sources.list.d/docker.list
-  echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" >> /etc/apt/sources.list.d/docker.list
+  if [ "$ubuntuversion" == '14.04' ];
+  then
+    echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" >> /etc/apt/sources.list.d/docker.list
+  fi
+  if [ "$ubuntuversion" == '15.10' ];
+  then
+    echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" >> /etc/apt/sources.list.d/docker.list
+  fi
+  
   apt-get update
   apt-get install docker-engine -y
 }
