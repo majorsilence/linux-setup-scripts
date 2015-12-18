@@ -47,12 +47,14 @@ gitsetup()
 {
   apt-get install -y git git-gui 
   wget https://gist.githubusercontent.com/majorsilence/69e3fd56b07657b2e951/raw/f8fe9185849f85094c3278b8d1c89fa5c4467c28/Git%2520Config -O ~/.gitconfig
+  chown peter:peter .gitconfig
 }
 
 fluxboxinstall()
 {
   apt-get install -y fluxbox 
   git clone https://github.com/majorsilence/FluxBoxConfig.git ~/.fluxbox
+  chown peter:peter .fluxbox -R
 }
 
 dockerinstall()
