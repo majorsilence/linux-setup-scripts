@@ -34,7 +34,7 @@ configuremono()
 	echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list
 
 	apt-get update
-	apt-get install -y mono-complete sqlite3 unzip monodevelop mono-xsp4 mono-vbnc
+	apt-get install -y mono-complete sqlite3 unzip monodevelop mono-xsp4 mono-vbnc nuget
 
 	echo "configure /etc/mono/registry for use with MVC5"
 	rm -rf /etc/mono/registry
