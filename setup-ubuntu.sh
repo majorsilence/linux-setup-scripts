@@ -136,7 +136,10 @@ apt-get install -y p7zip-full gstreamer1.0-fluendo-mp3 gstreamer1.0-plugins-bad 
 # clean up unused packages
 sudo apt-get autoclean -y
 
- ecryptfs-setup-private
+ecryptfs-setup-private
+ 
+mkdir ~/bin
+chown peter:peter ~/bin -R
 
 
 
