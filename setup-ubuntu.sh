@@ -141,5 +141,10 @@ ecryptfs-setup-private
 mkdir ~/bin
 chown peter:peter ~/bin -R
 
+if [ "$ubuntuversion" == '14.04' ];
+then
+  apt-get install nautilus-open-terminal -y
+fi
+
 
 
