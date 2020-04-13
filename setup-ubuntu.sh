@@ -6,65 +6,18 @@ sudo apt-get update
 # upgrade all packages
 sudo apt-get upgrade -y
 
-getubuntuversion()
-{
-	b=$(cat /etc/issue)
-
-	if [[ $b == *14.04* ]]; 
-		then 
-		echo '14.04'
-	fi
-
-	if [[ $b == *15.10* ]]; 
-		then 
-		echo '15.10'
-	fi
-}
-
-read ubuntuversion junk <<< $(getubuntuversion; echo $?)
-echo "ubuntu version is: $ubuntuversion"
 
 configuremono()
 {
-	wget -O xamarin.gpg http://download.mono-project.com/repo/xamarin.gpg
-	apt-key add xamarin.gpg
-	rm -f xamarin.gpg
-	
-	rm -rf /etc/apt/sources.list.d/mono-xamarin.list
-	echo "deb http://download.mono-project.com/repo/debian wheezy main" > /etc/apt/sources.list.d/mono-xamarin.list
+	apt install gnupg ca-certificates
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+	echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+	apt update
 
-	apt-get update
-	apt-get install -y mono-complete sqlite3 unzip monodevelop mono-xsp4 mono-vbnc nuget
+	apt-get install -y mono-complete sqlite3 unzip nuget
 
-	echo "configure /etc/mono/registry for use with MVC5"
-	rm -rf /etc/mono/registry
-	mkdir /etc/mono/registry
-	mkdir /etc/mono/registry/LocalMachine
-	chmod g+rwx /etc/mono/registry/
-	chmod g+rwx /etc/mono/registry/LocalMachine
-
-	mozroots --sync --machine
-	# mozroots --import --sync
 }
 
-googledrive()
-{
-  add-apt-repository ppa:alessandro-strada/ppa -y
-  apt-get update
-  apt-get install google-drive-ocamlfuse -y
-}
-
-clem()
-{
-  if [ "$ubuntuversion" == '14.04' ];
-  then
-    add-apt-repository ppa:me-davidsansome/clementine
-    apt-get update 
-    apt-get install clementine -y
-  else
-    apt-get install clementine -y
-  fi
-}
 
 gitsetup()
 {
@@ -80,71 +33,43 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
-dockerinstall()
+podmaninstall()
 {
-  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D	
-  touch /etc/apt/sources.list.d/docker.list
-  if [ "$ubuntuversion" == '14.04' ];
-  then
-    echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" >> /etc/apt/sources.list.d/docker.list
-  fi
-  if [ "$ubuntuversion" == '15.10' ];
-  then
-    echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" >> /etc/apt/sources.list.d/docker.list
-  fi
-  
-  apt-get update
-  apt-get install docker-engine -y
+	. /etc/os-release
+	sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+	curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | apt-key add -
+	apt-get update -qq
+	apt-get -qq -y install podman
+	alias docker=podman
 }
 
-virtualboxinstall()
-{
-  	
-  touch /etc/apt/sources.list.d/virtualbox.list
-  if [ "$ubuntuversion" == '14.04' ];
-  then
-    echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list
-  fi
-  if [ "$ubuntuversion" == '15.10' ];
-  then
-    echo "deb http://download.virtualbox.org/virtualbox/debian wily contrib" >> /etc/apt/sources.list.d/virtualbox.list
-  fi
-  wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
-  
-  apt-get update
-  apt-get install virtualbox-5.0 -y
-}
 
-vagrantinstall()
-{
-	wget https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.deb
-	dpkg -i vagrant_1.7.4_x86_64.deb
-	rm -rf vagrant_1.7.4_x86_64.deb
-}
 
 configuremono
-googledrive
-clem
 gitsetup
 fluxboxinstall
-dockerinstall
-virtualboxinstall
-vagrantinstall
+podmaninstall
 
-apt-get install -y gnome-do xbacklight p7zip-full gstreamer1.0-fluendo-mp3 gstreamer1.0-plugins-bad wine network-manager-vpnc-gnome network-manager-openvpn-gnome
+apt install -y 7zip-full flatpak gnome-software-plugin-flatpak network-manager-openvpn openvpn network-manager-openvpn-gnome synaptic flameshot nautilus-extension-open-terminal
 
+apt remove -y remmina firefox libreoffice
 # clean up unused packages
 sudo apt-get autoclean -y
 
-ecryptfs-setup-private
+
+ snap install firefox
+ snap install slack --classic
+ snap install code --classic
+ snap install dotnet-sdk --classic
+ snap install rider --classic
+ snap install skype --classic
+ snap install remmina
+ snap install libreoffice
  
-mkdir ~/bin
-chown peter:peter ~/bin -R
-
-if [ "$ubuntuversion" == '14.04' ];
-then
-  apt-get install nautilus-open-terminal -y
-fi
-
+ # reboot before doing flatpak stuff?
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+ 
+flatpak install flathub us.zoom.Zoom
+flatpak install flathub com.valvesoftware.Steam
 
 
