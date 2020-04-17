@@ -43,14 +43,12 @@ podmaninstall()
 	alias docker=podman
 }
 
-
+apt install -y 7zip-full curl flatpak gnome-software-plugin-flatpak network-manager-openvpn openvpn network-manager-openvpn-gnome synaptic flameshot nautilus-extension-open-terminal gthumb
 
 configuremono
 gitsetup
 fluxboxinstall
 podmaninstall
-
-apt install -y 7zip-full flatpak gnome-software-plugin-flatpak network-manager-openvpn openvpn network-manager-openvpn-gnome synaptic flameshot nautilus-extension-open-terminal gthumb
 
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
