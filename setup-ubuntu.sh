@@ -55,19 +55,20 @@ apt remove -y remmina firefox libreoffice
 sudo apt-get autoclean -y
 
 
- snap install firefox
- snap install slack --classic
- snap install code --classic
- snap install dotnet-sdk --classic
- snap install rider --classic
- snap install skype --classic
- snap install remmina
- snap install libreoffice
+snap install firefox
+snap install slack --classic
+snap install code --classic
+snap install dotnet-sdk --classic
+snap install rider --classic
+snap install skype --classic
+snap install remmina
+snap install libreoffice
  
  # reboot before doing flatpak stuff?
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
  
 flatpak install flathub us.zoom.Zoom
 flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub org.gnome.meld
 
 
