@@ -63,6 +63,7 @@ snap install rider --classic
 snap install skype --classic
 snap install remmina
 snap install libreoffice
+sudo snap install powershell --classic
  
  # reboot before doing flatpak stuff?
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
