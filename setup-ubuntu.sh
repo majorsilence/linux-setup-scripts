@@ -45,6 +45,10 @@ podmaninstall()
 
 apt install -y 7zip-full curl flatpak gnome-software-plugin-flatpak network-manager-openvpn openvpn network-manager-openvpn-gnome synaptic flameshot nautilus-extension-open-terminal gthumb
 
+# avoid unresponsive state due memory use, see https://github.com/rfjakob/earlyoom
+# this may not want to be installed on machines with plenty of memory
+# apt install -y earlyoom
+
 configuremono
 gitsetup
 fluxboxinstall
