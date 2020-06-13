@@ -51,7 +51,6 @@ snap install dotnet-sdk --classic
 snap install rider --classic
 snap install skype --classic
 snap install remmina
-snap install libreoffice
 sudo snap install powershell --classic
 sudo snap install postman
  
@@ -62,6 +61,7 @@ flatpak install flathub us.zoom.Zoom
 flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub org.gnome.meld
 flatpak install flathub org.mozilla.firefox
+flatpak install flathub org.libreoffice.LibreOffice
 
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
