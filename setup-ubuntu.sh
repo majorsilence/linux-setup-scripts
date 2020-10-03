@@ -62,6 +62,7 @@ flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub org.gnome.meld
 flatpak install flathub org.mozilla.firefox
 flatpak install flathub org.libreoffice.LibreOffice
+flatpak install flathub io.mrarm.mcpelauncher
 
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
