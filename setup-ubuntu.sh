@@ -53,6 +53,10 @@ snap install skype --classic
 snap install remmina
 sudo snap install powershell --classic
 sudo snap install postman
+
+# obs studio
+# https://snapcraft.io/obs-studio
+
  
  # reboot before doing flatpak stuff?
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
