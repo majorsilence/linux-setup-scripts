@@ -51,6 +51,8 @@ snap install dotnet-sdk --classic
 snap install rider --classic
 snap install skype --classic
 snap install remmina
+# if remmina does not work in wayland sessions use krdc
+#snap install krdc
 sudo snap install powershell --classic
 sudo snap install postman
 
