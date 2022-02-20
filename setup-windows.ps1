@@ -3,6 +3,9 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 choco install visualstudio2022community -y
+choco install visualstudio2022-workload-manageddesktop -y
+choco install visualstudio2022-workload-netweb -y
+choco install visualstudio2022-workload-manageddesktopbuildtools -y
 choco install jetbrains-rider -y
 choco install vscode -y
 choco install github-desktop -y
