@@ -34,7 +34,7 @@ fluxboxinstall()
 }
 
 
-apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak network-manager-openvpn openvpn network-manager-openvpn-gnome synaptic flameshot gthumb
+apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot
 
 # avoid unresponsive state due memory use, see https://github.com/rfjakob/earlyoom
 # this may not want to be installed on machines with plenty of memory
