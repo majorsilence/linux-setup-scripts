@@ -49,15 +49,11 @@ fluxboxinstall
 snap install code --classic
 snap install dotnet-sdk --classic
 snap install rider --classic
-snap install skype --classic
-snap install remmina
+# snap install skype --classic
 # if remmina does not work in wayland sessions use krdc
 #snap install krdc
 sudo snap install powershell --classic
-sudo snap install postman
 
-# obs studio
-# https://snapcraft.io/obs-studio
 
  
  # reboot before doing flatpak stuff?
@@ -70,6 +66,9 @@ flatpak install flathub org.mozilla.firefox
 flatpak install flathub org.libreoffice.LibreOffice
 flatpak install flathub io.mrarm.mcpelauncher
 flatpak install flathub io.github.shiftey.Desktop
+flatpak install flathub com.obsproject.Studio
+flatpak install flathub com.getpostman.Postman
+flatpak install flathub org.remmina.Remmina
 
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
