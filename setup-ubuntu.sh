@@ -34,7 +34,16 @@ fluxboxinstall()
 }
 
 
-apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot
+sudo apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo chown root:docker /var/run/docker.sock
+sudo chown -R root:docker /var/run/docker
+# this works but the group does not?  Why?
+sudo chown $USER /var/run/docker.sock
+newgrp docker 
+
 
 # avoid unresponsive state due memory use, see https://github.com/rfjakob/earlyoom
 # this may not want to be installed on machines with plenty of memory
