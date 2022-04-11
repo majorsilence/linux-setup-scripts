@@ -78,6 +78,7 @@ flatpak install flathub io.github.shiftey.Desktop
 flatpak install flathub com.obsproject.Studio
 flatpak install flathub com.getpostman.Postman
 flatpak install flathub org.remmina.Remmina
+flatpak install flathub org.kde.kolourpaint
 
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
