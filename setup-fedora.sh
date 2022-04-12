@@ -50,17 +50,18 @@ sudo snap install powershell --classic
  # reboot before doing flatpak stuff?
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
  
-flatpak install flathub us.zoom.Zoom
-flatpak install flathub com.valvesoftware.Steam
-flatpak install flathub org.gnome.meld
-flatpak install flathub org.mozilla.firefox
-flatpak install flathub org.libreoffice.LibreOffice
-flatpak install flathub io.mrarm.mcpelauncher
-flatpak install flathub io.github.shiftey.Desktop
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub com.getpostman.Postman
-flatpak install flathub org.remmina.Remmina
-flatpak install flathub org.kde.kolourpaint
+flatpak install flathub -y --noninteractive us.zoom.Zoom
+flatpak install flathub -y --noninteractive com.valvesoftware.Steam
+flatpak install flathub -y --noninteractive org.gnome.meld
+flatpak install flathub -y --noninteractive org.mozilla.firefox
+flatpak install flathub -y --noninteractive org.libreoffice.LibreOffice
+flatpak install flathub -y --noninteractive io.mrarm.mcpelauncher
+flatpak install flathub -y --noninteractive io.github.shiftey.Desktop
+flatpak install flathub -y --noninteractive com.obsproject.Studio
+flatpak install flathub -y --noninteractive com.getpostman.Postman
+flatpak install flathub -y --noninteractive org.remmina.Remmina
+flatpak install flathub -y --noninteractive org.kde.kolourpaint
+flatpak install flathub -y --noninteractive app.resp.RESP
 
 dnf remove -y remmina firefox libreoffice
 
