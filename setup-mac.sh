@@ -15,6 +15,7 @@ brew install --cask postman
 brew install --cask powershell
 brew install git
 brew install --cask github
+brew install --cask meld
 
 # install vm software
 brew install qemu utm
