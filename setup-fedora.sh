@@ -25,10 +25,6 @@ fluxboxinstall()
 dnf install -y p7zip curl docker-ce docker-ce-cli containerd.io flameshot
 systemctl start docker
 
-dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf install ffmpeg libva libva-utils
-
 # avoid unresponsive state due memory use, see https://github.com/rfjakob/earlyoom
 # this may not want to be installed on machines with plenty of memory
 # apt install -y earlyoom
