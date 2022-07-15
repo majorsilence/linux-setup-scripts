@@ -43,7 +43,8 @@ echo "At this point the system needs to be restarted for snaps to properly insta
 
 #snap install slack --classic
 snap install code --classic
-snap install dotnet-sdk --classic
+# snap install dotnet-sdk --classic
+sudo dnf install dotnet-sdk-6.0
 snap install rider --classic
 #snap install skype --classic
 # if remmina does not work in wayland sessions use krdc
