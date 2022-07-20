@@ -64,6 +64,7 @@ flatpak install flathub -y --noninteractive org.remmina.Remmina
 flatpak install flathub -y --noninteractive org.kde.kolourpaint
 flatpak install flathub -y --noninteractive app.resp.RESP
 
+dnf install -y pan
 dnf remove -y remmina firefox libreoffice
 
 
