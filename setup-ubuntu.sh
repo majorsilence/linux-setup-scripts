@@ -81,6 +81,8 @@ flatpak install flathub -y --noninteractive org.remmina.Remmina
 flatpak install flathub -y --noninteractive org.kde.kolourpaint
 flatpak install flathub -y --noninteractive app.resp.RESP
 
+apt install -y pan
+
 apt remove -y remmina firefox libreoffice
 # clean up unused packages
 sudo apt-get autoclean -y
