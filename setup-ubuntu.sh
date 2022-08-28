@@ -71,7 +71,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub -y --noninteractive us.zoom.Zoom
 flatpak install flathub -y --noninteractive com.valvesoftware.Steam
 flatpak install flathub -y --noninteractive org.gnome.meld
-flatpak install flathub -y --noninteractive org.mozilla.firefox
 flatpak install flathub -y --noninteractive org.libreoffice.LibreOffice
 flatpak install flathub -y --noninteractive io.mrarm.mcpelauncher
 flatpak install flathub -y --noninteractive io.github.shiftey.Desktop
@@ -83,7 +82,7 @@ flatpak install flathub -y --noninteractive app.resp.RESP
 
 apt install -y pan
 
-apt remove -y remmina firefox libreoffice
+apt remove -y remmina libreoffice
 # clean up unused packages
 sudo apt-get autoclean -y
 
