@@ -79,6 +79,7 @@ flatpak install flathub -y --noninteractive com.getpostman.Postman
 flatpak install flathub -y --noninteractive org.remmina.Remmina
 flatpak install flathub -y --noninteractive org.kde.kolourpaint
 flatpak install flathub -y --noninteractive app.resp.RESP
+flatpak install flathub -y --noninteractive io.github.peazip.PeaZip
 
 apt install -y pan
 
