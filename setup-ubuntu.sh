@@ -44,6 +44,25 @@ tmux_and_neovim()
   update-alternatives --install /usr/bin/view view "${CUSTOM_NVIM_PATH}" 110
   update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
   update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
+  
+  mkdir -p $XDG_CONFIG_HOME/tmux
+  touch $XDG_CONFIG_HOME/tmux/tmux.conf
+  
+  cat <<EOF >> $XDG_CONFIG_HOME/tmux/tmux.conf
+# List of plugins 
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
+# set -g @plugin 'git@github.com:user/plugin'
+# set -g @plugin 'git@bitbucket.com:user/plugin'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '/usr/bin/tmux' 
+set -g display-panes-time 3000
+EOF
 }
 
 apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0
