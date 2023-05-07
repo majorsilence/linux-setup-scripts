@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # update package list
-sudo apt-get update
+apt-get update
 
 # upgrade all packages
-sudo apt-get upgrade -y
-
+apt-get upgrade -y
 
 configuremono()
 {
@@ -15,9 +14,7 @@ configuremono()
 	apt update
 
 	apt-get install -y mono-complete sqlite3 unzip nuget
-
 }
-
 
 gitsetup()
 {
@@ -33,15 +30,14 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
+apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0
 
-sudo apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot
-
-sudo groupadd docker
-sudo usermod -aG docker $USER
-sudo chown root:docker /var/run/docker.sock
-sudo chown -R root:docker /var/run/docker
+groupadd docker
+usermod -aG docker $USER
+chown root:docker /var/run/docker.sock
+chown -R root:docker /var/run/docker
 # this works but the group does not?  Why?
-sudo chown $USER /var/run/docker.sock
+chown $USER /var/run/docker.sock
 newgrp docker 
 
 
@@ -56,13 +52,11 @@ fluxboxinstall
 
 #snap install slack --classic
 snap install code --classic
-snap install dotnet-sdk --classic
 snap install rider --classic
 # snap install skype --classic
 # if remmina does not work in wayland sessions use krdc
 #snap install krdc
-sudo snap install powershell --classic
-
+snap install powershell --classic
 
  
  # reboot before doing flatpak stuff?
@@ -80,8 +74,6 @@ flatpak install flathub -y --noninteractive org.remmina.Remmina
 flatpak install flathub -y --noninteractive org.kde.kolourpaint
 flatpak install flathub -y --noninteractive app.resp.RESP
 flatpak install flathub -y --noninteractive io.github.peazip.PeaZip
-
-apt install -y pan
 
 apt remove -y remmina libreoffice
 # clean up unused packages
