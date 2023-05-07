@@ -30,6 +30,22 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
+tmux_and_neovim()
+{
+  apt install -y tmux tmux-plugin-manager
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod u+x nvim.appimage
+  mv ./nvim.appimage /usr/local/bin
+  export CUSTOM_NVIM_PATH=/usr/local/bin/nvim.appimage
+  # Set the above with the correct path, then run the rest of the commands:
+  set -u
+  update-alternatives --install /usr/bin/ex ex "${CUSTOM_NVIM_PATH}" 110
+  update-alternatives --install /usr/bin/vi vi "${CUSTOM_NVIM_PATH}" 110
+  update-alternatives --install /usr/bin/view view "${CUSTOM_NVIM_PATH}" 110
+  update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
+  update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
+}
+
 apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0
 
 groupadd docker
@@ -77,5 +93,5 @@ flatpak install flathub -y --noninteractive io.github.peazip.PeaZip
 
 apt remove -y remmina libreoffice
 # clean up unused packages
-sudo apt-get autoclean -y
+apt-get autoclean -y
 
