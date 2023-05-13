@@ -32,7 +32,7 @@ fluxboxinstall()
 
 neovim_setup()
 {
-  
+  apt install build-essential -y
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod u+x nvim.appimage
   mv ./nvim.appimage /usr/local/bin
@@ -71,7 +71,7 @@ set -g display-panes-time 3000
 EOF
 }
 
-apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0
+apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0 build-essential
 
 groupadd docker
 usermod -aG docker $USER
