@@ -30,9 +30,9 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
-tmux_and_neovim()
+neovim_setup()
 {
-  apt install -y tmux tmux-plugin-manager
+  
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod u+x nvim.appimage
   mv ./nvim.appimage /usr/local/bin
@@ -45,10 +45,16 @@ tmux_and_neovim()
   update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
   update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
   
-  mkdir -p $XDG_CONFIG_HOME/tmux
-  touch $XDG_CONFIG_HOME/tmux/tmux.conf
-  
-  cat <<EOF >> $XDG_CONFIG_HOME/tmux/tmux.conf
+  mkdir -p $XDG_CONFIG_HOME/nvim/lua
+  touch $XDG_CONFIG_HOME/nvim/lua/plugins.lua
+}
+
+tmux_setup()
+{
+    apt install -y tmux tmux-plugin-manager
+    mkdir -p $XDG_CONFIG_HOME/tmux
+    touch $XDG_CONFIG_HOME/tmux/tmux.conf
+    cat <<EOF >> $XDG_CONFIG_HOME/tmux/tmux.conf
 # List of plugins 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
