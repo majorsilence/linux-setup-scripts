@@ -45,8 +45,9 @@ neovim_setup()
   update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
   update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
   
-  mkdir -p $XDG_CONFIG_HOME/nvim/lua
-  touch $XDG_CONFIG_HOME/nvim/lua/plugins.lua
+  curl -sLf https://spacevim.org/install.sh | bash
+  #mkdir -p $XDG_CONFIG_HOME/nvim/lua
+  #touch $XDG_CONFIG_HOME/nvim/lua/plugins.lua
 }
 
 tmux_setup()
