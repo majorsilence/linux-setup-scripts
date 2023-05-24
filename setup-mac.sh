@@ -16,6 +16,7 @@ brew install --cask powershell
 brew install git
 brew install --cask github
 brew install --cask meld
+brew install --cask iterm2
 
 # install vm software
 brew install qemu utm
