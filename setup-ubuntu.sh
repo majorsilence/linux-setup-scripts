@@ -30,49 +30,7 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
-neovim_setup()
-{
-  apt install build-essential -y
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod u+x nvim.appimage
-  mv ./nvim.appimage /usr/local/bin
-  export CUSTOM_NVIM_PATH=/usr/local/bin/nvim.appimage
-  # Set the above with the correct path, then run the rest of the commands:
-  set -u
-  update-alternatives --install /usr/bin/ex ex "${CUSTOM_NVIM_PATH}" 110
-  update-alternatives --install /usr/bin/vi vi "${CUSTOM_NVIM_PATH}" 110
-  update-alternatives --install /usr/bin/view view "${CUSTOM_NVIM_PATH}" 110
-  update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
-  update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
-  
-  curl -sLf https://spacevim.org/install.sh | bash
-  #mkdir -p $XDG_CONFIG_HOME/nvim/lua
-  #touch $XDG_CONFIG_HOME/nvim/lua/plugins.lua
-}
-
-tmux_setup()
-{
-    apt install -y tmux tmux-plugin-manager
-    mkdir -p $XDG_CONFIG_HOME/tmux
-    touch $XDG_CONFIG_HOME/tmux/tmux.conf
-    cat <<EOF >> $XDG_CONFIG_HOME/tmux/tmux.conf
-# List of plugins 
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'github_username/plugin_name#branch'
-# set -g @plugin 'git@github.com:user/plugin'
-# set -g @plugin 'git@bitbucket.com:user/plugin'
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '/usr/bin/tmux' 
-set -g display-panes-time 3000
-EOF
-}
-
-apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0 build-essential
+apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0 build-essential cockpit cockpit-pcp
 
 groupadd docker
 usermod -aG docker $USER
@@ -91,11 +49,8 @@ configuremono
 gitsetup
 fluxboxinstall
 
-
-#snap install slack --classic
 snap install code --classic
 snap install rider --classic
-# snap install skype --classic
 # if remmina does not work in wayland sessions use krdc
 #snap install krdc
 snap install powershell --classic
