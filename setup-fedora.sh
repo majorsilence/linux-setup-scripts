@@ -4,9 +4,7 @@
 configuremono()
 {
 	dnf install -y mono-devel
-
 }
-
 
 gitsetup()
 {
@@ -22,7 +20,8 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
-dnf install -y p7zip curl docker-ce docker-ce-cli containerd.io flameshot
+dnf install -y p7zip curl docker-ce docker-ce-cli containerd.io flameshot cockpit
+systemctl enable --now cockpit.socket
 systemctl start docker
 
 # avoid unresponsive state due memory use, see https://github.com/rfjakob/earlyoom
@@ -37,12 +36,11 @@ dnf install snapd
 ln -s /var/lib/snapd/snap /snap
 echo "At this point the system needs to be restarted for snaps to properly install.  See https://snapcraft.io/docs/installing-snap-on-fedora"
 
-#snap install slack --classic
+
 snap install code --classic
 # snap install dotnet-sdk --classic
-sudo dnf install dotnet-sdk-6.0
+sudo dnf install dotnet-sdk-6.0 dotnet-sdk-8.0
 snap install rider --classic
-#snap install skype --classic
 # if remmina does not work in wayland sessions use krdc
 #snap install krdc
 sudo snap install powershell --classic
