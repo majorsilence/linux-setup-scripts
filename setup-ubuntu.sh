@@ -30,7 +30,7 @@ fluxboxinstall()
   chown peter:peter .fluxbox -R
 }
 
-apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0 dotnet-sdk-8.0 build-essential cockpit cockpit-pcp
+apt install -y p7zip-full curl docker.io flatpak gnome-software-plugin-flatpak synaptic flameshot pan dotnet-sdk-6.0 dotnet-sdk-8.0 build-essential cockpit cockpit-machines cockpit-pcp
 
 groupadd docker
 usermod -aG docker $USER
