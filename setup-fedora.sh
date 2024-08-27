@@ -1,11 +1,5 @@
 #!/bin/bash
 
-
-configuremono()
-{
-	dnf install -y mono-devel
-}
-
 gitsetup()
 {
   dnf install -y git-all
@@ -28,7 +22,6 @@ systemctl start docker
 # this may not want to be installed on machines with plenty of memory
 # apt install -y earlyoom
 
-configuremono
 gitsetup
 # fluxboxinstall
 
