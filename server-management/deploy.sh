@@ -22,7 +22,7 @@ perform_task() {
     for script_path in ${SCRIPT_LIST[*]}
     do
       scp $script_path $ssh_user@$ssh_server:/home/$ssh_user
-      sshpass -p "$ssh_password" ssh "$ssh_user@$ssh_server" "chmod +x /home/$ssh_user/$script_path && sudo /home/$ssh_user/$script_path"
+      sshpass -p "$ssh_password" ssh "$ssh_user@$ssh_server" "chmod +x /home/$ssh_user/$script_path && echo $ssh_password | sudo -S /home/$ssh_user/$script_path"
     done
     echo "Finish task $ssh_server"
 }
