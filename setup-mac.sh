@@ -15,7 +15,7 @@ brew install --cask postman
 brew install --cask powershell
 brew install git
 brew install --cask github
-brew install --cask meld
+brew install --cask dehesselle-meld
 brew install --cask iterm2
 brew install --cask devtoys
 
